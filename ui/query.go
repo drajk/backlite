@@ -24,7 +24,7 @@ const selectCompletedTask = `
 	SELECT
 	    id,
 		created_at,
-		queue text,
+		queue,
 		last_executed_at,
 		attempts,
 		last_duration_micro,
@@ -42,7 +42,7 @@ const selectRunningTasks = `
 	SELECT 
 	    id,
 	    queue,
-	    null,
+	    null as placeholder,
 	    attempts,
 	    wait_until,
 	    created_at,
@@ -58,12 +58,12 @@ const selectCompletedTasks = `
 	SELECT
 	    id,
 		created_at,
-		queue text,
+		queue,
 		last_executed_at,
 		attempts,
 		last_duration_micro,
 		succeeded,
-		null,
+		null as placeholder,
 		expires_at,
 		error
 	FROM
