@@ -21,5 +21,3 @@ CREATE TABLE IF NOT EXISTS backlite_tasks_completed (
     expires_at BIGINT,
     error TEXT
 );
-
-CREATE INDEX backlite_tasks_wait_until ON backlite_tasks (wait_until);
