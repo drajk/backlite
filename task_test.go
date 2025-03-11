@@ -7,8 +7,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/mikestefanello/backlite/internal/task"
-	"github.com/mikestefanello/backlite/internal/testutil"
+	"github.com/drajk/backlite/internal/task"
+	"github.com/drajk/backlite/internal/testutil"
 )
 
 func TestTaskAddOp_Ctx(t *testing.T) {
