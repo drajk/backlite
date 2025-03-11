@@ -7,7 +7,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/mikestefanello/backlite/internal/testutil"
+	"github.com/drajk/backlite/internal/testutil"
 )
 
 type mockDispatcher struct {
