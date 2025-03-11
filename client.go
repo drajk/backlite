@@ -10,8 +10,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/mikestefanello/backlite/internal/query"
-	"github.com/mikestefanello/backlite/internal/task"
+	"github.com/drajk/backlite/internal/query"
+	"github.com/drajk/backlite/internal/task"
 )
 
 // now returns the current time in a way that tests can override.
