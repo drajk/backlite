@@ -138,8 +138,22 @@ func (c *Client) Stop(ctx context.Context) bool {
 // Install installs the provided schema in the database.
 // TODO provide migrations
 func (c *Client) Install() error {
-	_, err := c.db.Exec(query.Schema)
-	return err
+	statements := strings.Split(query.Schema, ";")
+
+	for _, stmt := range statements {
+		stmt = strings.TrimSpace(stmt)
+		if stmt == "" {
+			continue // Skip empty statements
+		}
+
+		// Execute the statement
+		_, err := c.db.Exec(stmt)
+		if err != nil {
+			return fmt.Errorf("failed to execute statement: %v\nStatement: %s", err, stmt)
+		}
+	}
+
+	return nil
 }
 
 // Notify notifies the dispatcher that a new task has been added.
