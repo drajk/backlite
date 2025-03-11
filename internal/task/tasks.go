@@ -5,7 +5,7 @@ import (
 	"database/sql"
 	"time"
 
-	"github.com/mikestefanello/backlite/internal/query"
+	"github.com/drajk/backlite/internal/query"
 )
 
 // Tasks are a slice of tasks.
