@@ -1,24 +1,24 @@
 CREATE TABLE IF NOT EXISTS backlite_tasks (
     id VARCHAR(255) PRIMARY KEY,
-    created_at INT NOT NULL,
+    created_at BIGINT NOT NULL,
     queue VARCHAR(255) NOT NULL,
     task LONGBLOB NOT NULL,
-    wait_until INT,
-    claimed_at INT,
-    last_executed_at INT,
+    wait_until BIGINT,
+    claimed_at BIGINT,
+    last_executed_at BIGINT,
     attempts INT NOT NULL DEFAULT 0
 );
 
 CREATE TABLE IF NOT EXISTS backlite_tasks_completed (
     id VARCHAR(255) PRIMARY KEY NOT NULL,
-    created_at INT NOT NULL,
+    created_at BIGINT NOT NULL,
     queue VARCHAR(255) NOT NULL,
-    last_executed_at INT,
+    last_executed_at BIGINT,
     attempts INT NOT NULL,
-    last_duration_micro INT,
+    last_duration_micro BIGINT,
     succeeded INT,
     task LONGBLOB,
-    expires_at INT,
+    expires_at BIGINT,
     error TEXT
 );
 
