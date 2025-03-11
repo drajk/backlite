@@ -12,8 +12,8 @@ import (
 	"github.com/google/uuid"
 	_ "github.com/mattn/go-sqlite3"
 
-	"github.com/mikestefanello/backlite/internal/query"
-	"github.com/mikestefanello/backlite/internal/task"
+	"github.com/drajk/backlite/internal/query"
+	"github.com/drajk/backlite/internal/task"
 )
 
 func GetTasks(t *testing.T, db *sql.DB) task.Tasks {
