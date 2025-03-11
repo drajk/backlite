@@ -26,12 +26,25 @@ type (
 func NewHandler(db *sql.DB) *http.ServeMux {
 	h := &Handler{db: db}
 	mux := http.NewServeMux()
-	mux.HandleFunc("GET /", h.Running)
-	mux.HandleFunc("GET /upcoming", h.Upcoming)
-	mux.HandleFunc("GET /succeeded", h.Succeeded)
-	mux.HandleFunc("GET /failed", h.Failed)
-	mux.HandleFunc("GET /task/{task}", h.Task)
-	mux.HandleFunc("GET /completed/{task}", h.TaskCompleted)
+
+	routes := []struct {
+		Path    string
+		Handler func(http.ResponseWriter, *http.Request)
+	}{
+		{Path: "/", Handler: h.Running},
+		{Path: "/upcoming", Handler: h.Upcoming},
+		{Path: "/succeeded", Handler: h.Succeeded},
+		{Path: "/failed", Handler: h.Failed},
+		{Path: "/task/{task}", Handler: h.Task},
+		{Path: "/completed/{task}", Handler: h.TaskCompleted},
+	}
+
+	// Register routes with the provided prefix
+	for _, route := range routes {
+		fullPath := prefix + route.Path
+		mux.HandleFunc("GET "+fullPath, route.Handler)
+	}
+
 	return mux
 }
 
