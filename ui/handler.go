@@ -23,7 +23,7 @@ type (
 	}
 )
 
-func NewHandler(db *sql.DB) *http.ServeMux {
+func NewHandler(prefix string, db *sql.DB) *http.ServeMux {
 	h := &Handler{db: db}
 	mux := http.NewServeMux()
 
