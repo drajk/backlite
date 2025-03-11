@@ -1,25 +1,25 @@
 CREATE TABLE IF NOT EXISTS backlite_tasks (
-    id text PRIMARY KEY,
-    created_at integer NOT NULL,
-    queue text NOT NULL,
-    task blob NOT NULL,
-    wait_until integer,
-    claimed_at integer,
-    last_executed_at integer,
-    attempts integer NOT NULL DEFAULT 0
-) STRICT;
+    id VARCHAR(255) PRIMARY KEY,
+    created_at INT NOT NULL,
+    queue VARCHAR(255) NOT NULL,
+    task LONGBLOB NOT NULL,
+    wait_until INT,
+    claimed_at INT,
+    last_executed_at INT,
+    attempts INT NOT NULL DEFAULT 0
+);
 
 CREATE TABLE IF NOT EXISTS backlite_tasks_completed (
-    id text PRIMARY KEY NOT NULL,
-    created_at integer NOT NULL,
-    queue text NOT NULL,
-    last_executed_at integer,
-    attempts integer NOT NULL,
-    last_duration_micro integer,
-    succeeded integer,
-    task blob,
-    expires_at integer,
-    error text
-) STRICT;
+    id VARCHAR(255) PRIMARY KEY NOT NULL,
+    created_at INT NOT NULL,
+    queue VARCHAR(255) NOT NULL,
+    last_executed_at INT,
+    attempts INT NOT NULL,
+    last_duration_micro INT,
+    succeeded INT,
+    task LONGBLOB,
+    expires_at INT,
+    error TEXT
+);
 
-CREATE INDEX IF NOT EXISTS backlite_tasks_wait_until ON backlite_tasks (wait_until) WHERE wait_until IS NOT NULL;
+CREATE INDEX backlite_tasks_wait_until ON backlite_tasks (wait_until);
