@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"github.com/mikestefanello/backlite/internal/query"
+	"github.com/drajk/backlite/internal/query"
 )
 
 // Task is a task that is queued for execution.
