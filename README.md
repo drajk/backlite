@@ -1,4 +1,6 @@
-## Backlite: Type-safe, persistent, embedded task queues and background job runner w/ SQLite
+## Backlite: Type-safe, persistent, embedded task queues and background job runner w/ mySQL
+
+Forked from https://github.com/mikestefanello/backlite and made compatabile with mySQL
 
 [![Go Report Card](https://goreportcard.com/badge/github.com/mikestefanello/backlite)](https://goreportcard.com/report/github.com/mikestefanello/backlite)
 [![Test](https://github.com/mikestefanello/backlite/actions/workflows/test.yml/badge.svg)](https://github.com/mikestefanello/backlite/actions/workflows/test.yml)
