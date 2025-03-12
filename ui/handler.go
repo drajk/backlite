@@ -26,7 +26,7 @@ type (
 func NewHandler(g *echo.Group, db *sql.DB) {
 	h := &Handler{db: db}
 
-	g.GET("/", h.Running)
+	g.GET("/running", h.Running)
 	g.GET("/upcoming", h.Upcoming)
 	g.GET("/succeeded", h.Succeeded)
 	g.GET("/failed", h.Failed)
