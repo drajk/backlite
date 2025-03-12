@@ -23,18 +23,15 @@ type (
 	}
 )
 
-func NewHandler(db *sql.DB) *echo.Echo {
+func NewHandler(g *echo.Group, db *sql.DB) {
 	h := &Handler{db: db}
-	e := echo.New()
 
-	e.GET("/", h.Running)
-	e.GET("/upcoming", h.Upcoming)
-	e.GET("/succeeded", h.Succeeded)
-	e.GET("/failed", h.Failed)
-	e.GET("/task/:task", h.Task)               // Echo supports dynamic params using `:param`
-	e.GET("/completed/:task", h.TaskCompleted) // Same for completed tasks
-
-	return e
+	g.GET("/", h.Running)
+	g.GET("/upcoming", h.Upcoming)
+	g.GET("/succeeded", h.Succeeded)
+	g.GET("/failed", h.Failed)
+	g.GET("/task/:task", h.Task)
+	g.GET("/completed/:task", h.TaskCompleted)
 }
 
 func (h *Handler) Running(c echo.Context) error {
