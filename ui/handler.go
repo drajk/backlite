@@ -28,16 +28,12 @@ type (
 func NewHandler(g *echo.Group, prefix string, db *sql.DB) {
 	h := &Handler{db: db, prefix: prefix}
 
-	if prefix != "" && !hasLeadingSlash(prefix) {
-		prefix = "/" + prefix
-	}
-
-	g.GET(prefix+"/running", h.Running)
-	g.GET(prefix+"/upcoming", h.Upcoming)
-	g.GET(prefix+"/succeeded", h.Succeeded)
-	g.GET(prefix+"/failed", h.Failed)
-	g.GET(prefix+"/task/:task", h.Task)
-	g.GET(prefix+"/completed/:task", h.TaskCompleted)
+	g.GET("/running", h.Running)
+	g.GET("/upcoming", h.Upcoming)
+	g.GET("/succeeded", h.Succeeded)
+	g.GET("/failed", h.Failed)
+	g.GET("/task/:task", h.Task)
+	g.GET("/completed/:task", h.TaskCompleted)
 }
 
 func (h *Handler) Running(c echo.Context) error {
@@ -113,9 +109,4 @@ func (h *Handler) render(c echo.Context, tmpl *template.Template, data any) erro
 		Prefix:  h.prefix,
 		Content: data,
 	})
-}
-
-// Helper function to ensure prefix starts with "/"
-func hasLeadingSlash(s string) bool {
-	return len(s) > 0 && s[0] == '/'
 }
